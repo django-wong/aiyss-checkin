@@ -33,10 +33,12 @@ Future<String> checkin() async {
   final messageBag = [data['msg']];
 
   if (data['ret'] == 1) {
-    if (data['lastUsedTraffic'] != null) {
-      messageBag.add("已用流量: ${data['lastUsedTraffic']}");
-      messageBag.add("今日使用: ${data['todayUsedTraffic']}");
-      messageBag.add("剩余流量: ${data['unUsedTraffic']}");
+    if (data['trafficInfo'] != null) {
+      if (data['trafficInfo']['lastUsedTraffic'] != null) {
+        messageBag.add("已用流量: ${data['trafficInfo']['lastUsedTraffic']}");
+        messageBag.add("今日使用: ${data['trafficInfo']['todayUsedTraffic']}");
+        messageBag.add("剩余流量: ${data['trafficInfo']['unUsedTraffic']}");
+      }
     }
   }
 
